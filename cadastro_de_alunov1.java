@@ -5,48 +5,78 @@ void main() {
 
     ArrayList<String> alunos = new ArrayList<String>();
     String opcao;
- \
 
     do {
-        IO.println("Bem-Vindo ao Sistema de Cadastro\n" +
-                "=======MENU DE OPÇÕES=======\n" +
-                "1- Cadastar aluno\n" +
-                "2- Lista alunos\n" +
-                "3- Buscar aluno pelo nome\n" +
-                "4- Remover aluno\n" +
-                "5- Sair");
+        IO.println("\nBem-Vindo ao Sistema de Cadastro");
+        IO.println("=======MENU DE OPÇÕES=======");
+        IO.println("1- Cadastrar aluno");
+        IO.println("2- Listar alunos");
+        IO.println("3- Buscar aluno pelo nome");
+        IO.println("4- Remover aluno");
+        IO.println("5- Sair");
 
-        opcao = readln("\nDIGITE a opcao desejada: ");
-
-
-        IO.println("\nOpção escolhida:" + opcao);
+        opcao = readln("\nDigite a opção desejada: ");
 
         if (opcao.equals("1")) {
-            IO.println("\nIniciando Cadastro.....");
 
-        }else if (opcao.equals("2")) {
-            IO.println("\nIniciando listangem de alunos.....");
+            IO.println("\n=== CADASTRO DE ALUNO ===");
 
-        }else if (opcao.equals("3")) {
-            IO.println("\nBuscar aluno.....");
+            String nome = readln("Digite o nome do aluno: ");
+            alunos.add(nome);
 
-        }else if (opcao.equals("4")) {
-            IO.println("\nRemover aluno.....");
+            IO.println("Aluno cadastrado com sucesso!");
+
+        } else if (opcao.equals("2")) {
+
+            IO.println("\n=== LISTA DE ALUNOS ===");
+
+            if (alunos.size() == 0) {
+                IO.println("Nenhum aluno cadastrado.");
+            } else {
+                for (int i = 0; i < alunos.size(); i++) {
+                    IO.println((i + 1) + " - " + alunos.get(i));
+                }
+            }
+
+        } else if (opcao.equals("3")) {
+
+            IO.println("\n=== BUSCAR ALUNO ===");
+
+            String nomeBusca = readln("Digite o nome do aluno: ");
+
+            if (alunos.contains(nomeBusca)) {
+                IO.println("Aluno encontrado!");
+            } else {
+                IO.println("Aluno não encontrado.");
+            }
+
+        } else if (opcao.equals("4")) {
+
+            IO.println("\n=== REMOVER ALUNO ===");
+
+            String nomeRemover = readln("Digite o nome do aluno: ");
+
+            if (alunos.remove(nomeRemover)) {
+                IO.println("Aluno removido com sucesso!");
+            } else {
+                IO.println("Aluno não encontrado.");
+            }
 
         } else if (opcao.equals("5")) {
+
             IO.println("\nFINALIZANDO PROGRAMA...");
-            break;
+
+        } else {
+
+            IO.println("Opção inválida!");
+
         }
+
         try {
-            Thread.sleep(3000); // espera 5 segundos
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
 
     } while (!opcao.equals("5"));
-    {
-        IO.println("\nOpção escolhida:" + opcao);
-    }
-
-
 }
